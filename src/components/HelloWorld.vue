@@ -1,11 +1,3 @@
-<template>
-  <div class="hello">
-    {{ msg }}
-    <div>{{ computedMsg }}</div>
-    <div>{{ name }}</div>
-  </div>
-</template>
-
 <script>
 import { onMounted, ref, watch, toRefs, computed } from 'vue'
 export default {
@@ -26,6 +18,7 @@ export default {
     let computedMsg = computed(() => {
       return name.value + 'computed!!!!!'
     })
+    console.log('computedMsg', computedMsg)
 
     let changeName = () => {
       setTimeout(() => {
@@ -40,11 +33,24 @@ export default {
 
     onMounted(changeName)
 
-    return {
-      name,
-      computedMsg
-    }
+    // return () => h('div', {}, [
+    //   msg.value,
+    //   h('div', {}, computedMsg.value),
+    //   h('div', {}, name.value)
+    // ])
+
+    return () => (
+      <div>
+        {msg.value}
+        <div>{computedMsg.value}</div>
+        <div>{name.value}</div>
+      </div>
+    )
   },
+  mounted() {
+    console.log('组件自身的mounted被执行')
+    console.log('打印name的值', this.name);
+  }
 }
 </script>
 
