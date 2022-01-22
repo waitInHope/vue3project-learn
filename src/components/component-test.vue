@@ -9,19 +9,28 @@
             </template>
             <template #footer>我是footer</template>
         </DatePicker>
+        <button @click="foodList.push('ddd')">addFood</button>
     </div>
 </template>
 
 <script>
 import DatePicker from './date-picker.vue'
+import { computed } from 'vue'
 export default {
     name: 'component-test',
     components: {
         DatePicker
     },
+    provide() {
+        return {
+            foodList: this.foodList.length,
+            foodListComputed: computed(() => this.foodList.length)
+        }
+    },
     data() {
         return {
-            title: ''
+            title: '',
+            foodList: ['a', 'b', 'c']
         }
     },
     watch: {

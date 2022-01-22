@@ -11,12 +11,18 @@
         <div>
             <slot name="footer"></slot>
         </div>
+
+        <month-picker></month-picker>
     </div>
 </template>
 
 <script>
+import MonthPicker from './month-picker.vue'
 export default {
     name: 'date-picker',
+    components: {
+        MonthPicker
+    },
     props: {
         title: String,
         titleModifiers: {
