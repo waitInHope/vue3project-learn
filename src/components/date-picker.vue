@@ -13,15 +13,21 @@
         </div>
 
         <month-picker></month-picker>
+
+        <Suspense>
+            <AsyncComponent></AsyncComponent>
+        </Suspense>
     </div>
 </template>
 
 <script>
 import MonthPicker from './month-picker.vue'
+import { defineAsyncComponent } from 'vue'
 export default {
     name: 'date-picker',
     components: {
-        MonthPicker
+        MonthPicker,
+        AsyncComponent: defineAsyncComponent(() => import('./async-component.vue'))
     },
     props: {
         title: String,
