@@ -6,12 +6,13 @@ on:
       # master分支，你也可以改成其他分支
       - master
 jobs:
-  build:
-
+  build_front_project:
+    name: build project and move dist to server
     runs-on: ubuntu-16.04
 
     steps:
-    - uses: actions/checkout@master
+    - name: Checkout
+      uses: actions/checkout@master
     - name: Install npm dependencies
       run: npm install
     - name: Run build task
