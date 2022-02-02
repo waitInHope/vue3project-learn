@@ -7,7 +7,7 @@ export default {
     msg: String
   },
   setup(props) {
-    console.log('收到的属性值', props);
+    console.log('收到的属性值1', props);
 
     let { msg } = toRefs(props);
     console.log('从父组件传进来的参数', msg)
